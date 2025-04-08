@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curso de Buenas Prácticas Clínicas</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://github.com/Per-Arredondo/Clinica_medica/blob/main/Fondo%20JPG.jpeg?raw=true') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      color: #003366;
+    }
+    header {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    header img {
+      max-height: 100px;
+    }
+    main {
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 1rem;
+      margin: 2rem auto;
+      max-width: 1000px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      border-bottom: 2px solid #004080;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input, textarea, button {
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .confirmation {
+      color: green;
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    .hidden { display: none; }
+    .calendar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    .calendar div {
+      background-color: #e6f2ff;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 600px) {
+      main { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://raw.githubusercontent.com/Carminayg/Proyecto2logo/main/Proyecto2logo.png" alt="Logo del proyecto">
+    <h1>Curso de Buenas Prácticas Clínicas</h1>
+  </header>
+  <main>
+    <img src="https://github.com/Per-Arredondo/Clinica_medica/blob/main/ChatGPT%20Image%202%20abr%202025,%2016_04_57.png?raw=true" alt="Portada del curso" style="width:100%; border-radius:1rem;">
+
+    <section id="guia-internacional">
+      <h2>1. Guía Internacional BPC - ICH E6(R3)</h2>
+      <p>Resumen de los conceptos clave y evolución histórica de las Buenas Prácticas Clínicas...</p>
+      <details><summary>Secciones del ICH E6(R3)</summary>
+        <ul>
+          <li>Sección 1: Introducción</li>
+          <li>Sección 2: Principios Generales</li>
+          <li>Sección 3: Patrocinador</li>
+          <li>Sección 4: Investigador</li>
+          <li>Apéndices: Roles, Archivos Esenciales, etc.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="regulacion-mexico">
+      <h2>2. Regulación Nacional (México)</h2>
+      <ul>
+        <li>NOM-012-SSA3-2012</li>
+        <li>Reglamento de la Ley General de Salud en Materia de Investigación (DOF 02-04-2014)</li>
+        <li>NOM-004-SSA3-2012 - Expediente Clínico</li>
+      </ul>
+    </section>
+
+    <section id="digipris">
+      <h2>3. Plataforma DIGIPRIS</h2>
+      <p>Es la herramienta electrónica de COFEPRIS para ingresar solicitudes de autorización de estudios clínicos. Facilita y transparenta los trámites.</p>
+      <p><strong>Cédula de Evaluación COFEPRIS:</strong> 22 de mayo de 2024</p>
+    </section>
+
+    <section id="otras-guias">
+      <h2>4. Otras Guías Internacionales</h2>
+      <p>“Pautas Éticas Internacionales para la Investigación Relacionada con la Salud con Seres Humanos” entre otras.</p>
+    </section>
+
+    <section id="formulario">
+      <h2>Formulario de Registro</h2>
+      <form id="registro-form">
+        <input type="text" name="nombre" placeholder="Nombre completo" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <textarea name="comentarios" placeholder="Comentarios o retroalimentación..."></textarea>
+        <button type="submit">Enviar</button>
+        <div id="mensaje-exito" class="confirmation hidden">
+          ✅ Felicidades por haber concluido.<br>
+          ⏳ Tómate un tiempo para una retroalimentación general<br>
+          🎉 Programa tu evaluación final.
+          <div class="calendar" id="calendario"></div>
+        </div>
+      </form>
+    </section>
+
+    <section id="fin-del-curso">
+      <h2>¡FELICIDADES! Has terminado el curso.</h2>
+      <img src="https://i.imgur.com/Jtx0Z5V.png" alt="Felicidades" style="width:100%; max-width:400px; display:block; margin:auto;">
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('registro-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+      fetch('https://script.google.com/macros/s/AKfycbwqkIOnrvtAlrmEtrGKkGku2HvRWF5fkBIkEIxtMuOcVLEMJiTs28IfXWPCAhge6m1Kow/exec', {
+        method: 'POST',
+        body: data
+      })
+      .then(res => res.text())
+      .then(() => {
+        const msg = document.getElementById('mensaje-exito');
+        msg.classList.remove('hidden');
+
+        // Generar calendario siguiente dos meses
+        const calendario = document.getElementById('calendario');
+        calendario.innerHTML = '';
+        const today = new Date();
+        for (let i = 0; i < 60; i++) {
+          const d = new Date();
+          d.setDate(today.getDate() + i);
+          calendario.innerHTML += `<div>${d.toLocaleDateString()}</div>`;
+        }
+
+        setTimeout(() => {
+          msg.classList.add('hidden');
+          form.reset();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 5000);
+      });
+    });
+  </script>
+</body>
+</html>
